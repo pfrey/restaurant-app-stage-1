@@ -178,6 +178,7 @@ createRestaurantHTML = (restaurant) => {
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
+  more.tabIndex = '3';
   li.append(more)
 
   return li
@@ -209,3 +210,15 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   });
 } */
 
+
+//Service Worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+  .register('/sw.js')
+  .then(function() {
+    console.log('Service Worker Registration: Success')
+  })
+  .catch(function(err) {
+    console.error('Service Worker Registration: Fail ', err)
+  });
+}
